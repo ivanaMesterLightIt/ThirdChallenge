@@ -1,0 +1,15 @@
+#! /usr/bin/env php
+
+<?php
+
+use Acme\ShowCommand;
+use Symfony\Component\Console\Application;
+use GuzzleHttp\Client;
+
+require 'vendor/autoload.php';
+
+$app = new Application();
+
+$app->add(new Acme\ShowCommand(new GuzzleHttp\Client()));
+
+$app->run();
