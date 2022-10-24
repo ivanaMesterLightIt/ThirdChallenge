@@ -39,12 +39,10 @@ class ShowCommand extends Command {
         }
         $response = $this->client->get($endpoint)->getBody()->getContents();
         $table = new Table($output);
-        $newArray = [];
         foreach(json_decode($response) as $key => $value){
             if($key != 'Ratings'){
-                $arrayItem = [$key, $value];
-                $newArray = array_merge($arrayItem, $newArray);
-                $table->addRow($arrayItem);
+                $item = [$key, $value];
+                $table->addRow($item);
             }
         }
         $table->setColumnMaxWidth(1, 100);
